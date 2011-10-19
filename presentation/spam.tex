@@ -48,14 +48,20 @@
   \frametitle{Ensemble Method}
 
   \begin{itemize}
-    \item Foo.
+    \item Every classifier makes mistakes
+    \item Idea: combine different kinds of classifiers (so they make different kinds of mistakes)
+    \item We chose 3 classifiers so one at a time can be wrong
+    \begin{itemize}
+        \item (Or two if they're very uncertain: $p \approx 0.5$)
+        \item Arithmetic mean of the 3 predictions is used
+    \end{itemize}
   \end{itemize}
 
-%\begin{figure}
-%	\centering
-%	\includegraphics[width=\textwidth]{svm_margin.jpg}
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{spreadsheet.png}
 	%\caption{Source:}
-%\end{figure}
+\end{figure}
 }
 
 \frame
