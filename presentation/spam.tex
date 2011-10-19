@@ -194,4 +194,19 @@ The results have been obtained optimizing the total accuracy
 (the probability that an event of random category is classified correctly)
 }
 
+\frame
+{
+    \frametitle{Discussion}
+    \begin{itemize}
+        \item The unknown data turned out to have $\sim66\%$ spam, as opposed to 50\% in training set
+        \begin{itemize}
+            \item Possible benefits if we had used a similarly balanced set for training the classifiers
+        \end{itemize}
+        \item We split the training data in half to compare different classifiers' predictions side-by-side
+        \begin{itemize}
+            \item Proper cross-validation would have been better
+        \end{itemize}
+    \end{itemize}
+}
+
 \end{document}
