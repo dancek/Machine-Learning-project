@@ -1,0 +1,141 @@
+\documentclass[hyperref={pdfpagelabels=false}]{beamer}
+
+\usepackage{beamerthemeSingapore}
+%\usepackage{beamerthemebars}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{url}
+%\usecolortheme{orchid}
+
+\title{Multivariate Analysis Techniques at the LHC}
+\author{Eric Malmi}
+\institute{Helsinki Institute of Physics / Adaptive Informatics Research Centre, \\ Aalto University (Helsinki University of Technology)}
+
+\date{\today}
+
+\setbeamertemplate{footline}[page number]
+\begin{document}
+
+\setlength{\unitlength}{\textwidth}
+
+\frame{\titlepage}
+%\frame{\tableofcontents}
+\frame{
+\frametitle{Outline}
+\begin{itemize}
+  \item Introduction
+  \item Self-Organizing Map
+  \item Algorithms
+  \begin{itemize}
+    \item Neural Networks
+    \item Support Vector Machines
+    \item Gene Expression Programming
+    \item Multi-class classification
+  \end{itemize}
+  \item Results
+  \item Practical tips
+\end{itemize}
+}
+
+\section{Methods}
+\subsection{}
+
+\frame
+{
+  \frametitle{Support Vector Machines}
+
+  \begin{itemize}
+    \item The idea in SVM is to find a hyperplane that separates two different data samples with the largest possible margin 
+  \end{itemize}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{svm_margin.jpg}
+	%\caption{Source:}
+\end{figure}
+}
+
+\frame
+{
+  \frametitle{Support Vector Machines}
+
+\begin{columns}
+\begin{column}{7cm}
+{\small
+  \begin{itemize}
+    \item Usually the data vectors are first projected into a higher dimensional space
+    \item However, we only need to define the dot product, called the kernel function $\Phi(x,y)$, in the high-dimensional space (the kernel trick)
+    \item We use the popular radial basis function: $\Phi(x,y) = \exp(-\gamma||x-y||^2)$
+    \item Finding of the hyperplane is a quadratic optimization problem
+  \end{itemize}
+}
+\end{column}
+\begin{column}{4.5cm}
+\begin{figure}
+	\centering
+		\includegraphics[width=\textwidth]{svm2.png}
+	\label{fig:bridge}
+\end{figure}
+\end{column}
+\end{columns}
+}
+
+
+\section{Results}
+\subsection{}
+\frame
+{
+  \frametitle{Results}
+
+Average efficiencies of different algorithms (left) and the performance of the NN ordered binarization (right). 
+
+\begin{columns}
+\begin{column}{4cm}
+
+{\scriptsize
+\begin{table}
+\hspace{1.0cm}
+%\caption{Average efficiencies of different algorithms}
+%\begin{center}
+\begin{tabular}{l|c}
+Method & $<$Efficiency$>$ \\ \hline
+GEP & 92.49 \\
+%GEP one-against-all & 88.54 \\
+SVM & 94.21 \\
+%SVM one-against-one & 94.38 \\
+NN & 94.54 \\
+%NN 5 outputs & 94.42
+\end{tabular}
+%\end{center}
+\end{table}
+}
+\end{column}
+\begin{column}{7cm}
+
+\hspace{2.2cm}
+{\scriptsize
+\begin{table}
+%\caption{Performance of the NN ordered binarization.}
+%\begin{center}
+\begin{tabular}{c|cccc}
+  Real\textbackslash Pred & DD & SD & CD & ND \\ \hline
+  DD & {\bf 87.60} & 12.05 & 0.35 & 0.00 \\
+  SD & 2.15 & {\bf 95.20} & 2.58 & 0.07 \\
+  CD & 0.00 & 4.25 & {\bf 95.75} & 0.00 \\
+  ND & 0.15 & 0.25 & 0.00 & {\bf 99.60} \\ \hline
+  Purities &  {\bf 97.44} & {\bf 85.19} & {\bf 97.03} & {\bf 99.93}
+\end{tabular}
+%\end{center}
+\end{table}
+}
+\end{column}
+
+\end{columns}
+
+The results have been obtained optimizing the total accuracy
+(the probability that an event of random category is classified correctly)
+}
+
+\end{document}
