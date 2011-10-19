@@ -154,53 +154,24 @@
 {
   \frametitle{Results}
 
-Average efficiencies of different algorithms (left) and the performance of the NN ordered binarization (right). 
-
-\begin{columns}
-\begin{column}{4cm}
-
 {\scriptsize
 \begin{table}
 \hspace{1.0cm}
-%\caption{Average efficiencies of different algorithms}
+\caption{Accuracy on known data (10-fold cross-validation)}
 %\begin{center}
 \begin{tabular}{l|c}
-Method & $<$Efficiency$>$ \\ \hline
-GEP & 92.49 \\
-%GEP one-against-all & 88.54 \\
-SVM & 94.21 \\
-%SVM one-against-one & 94.38 \\
-NN & 94.54 \\
-%NN 5 outputs & 94.42
+Classifier & Accuracy \\ \hline
+SVM ($\gamma = 0.3$) & 98.4\% \\
+Bernoulli mixture (17 spam and 12 ham components) & 98.0\% \\
+Random forest (default parameters) & 97.1\% \\
 \end{tabular}
 %\end{center}
 \end{table}
 }
-\end{column}
-\begin{column}{7cm}
+\hspace{1.0cm}
 
-\hspace{2.2cm}
-{\scriptsize
-\begin{table}
-%\caption{Performance of the NN ordered binarization.}
-%\begin{center}
-\begin{tabular}{c|cccc}
-  Real\textbackslash Pred & DD & SD & CD & ND \\ \hline
-  DD & {\bf 87.60} & 12.05 & 0.35 & 0.00 \\
-  SD & 2.15 & {\bf 95.20} & 2.58 & 0.07 \\
-  CD & 0.00 & 4.25 & {\bf 95.75} & 0.00 \\
-  ND & 0.15 & 0.25 & 0.00 & {\bf 99.60} \\ \hline
-  Purities &  {\bf 97.44} & {\bf 85.19} & {\bf 97.03} & {\bf 99.93}
-\end{tabular}
-%\end{center}
-\end{table}
-}
-\end{column}
-
-\end{columns}
-
-The results have been obtained optimizing the total accuracy
-(the probability that an event of random category is classified correctly)
+{\bf Ensemble accuracy: 99.1\%} \\
+(with the known data split in half)
 }
 
 \frame
