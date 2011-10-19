@@ -48,6 +48,7 @@ for j = 1:length(components_ham)
 
             c_ham = components_ham(j);
             c_spam = components_spam(l);
+            
             pred = bmix_pred(x_train, y_train, x_val, c_ham, c_spam);
 
             % Check for ties
@@ -59,6 +60,7 @@ for j = 1:length(components_ham)
 
             pred(pred < 0.5) = 0;
             pred(pred >= 0.5) = 1;
+            wrongs = find(y_val ~= pred);
 
             [mixing, acc] = mixing_matrix(y_val,pred);
             mixings(:,:,i) = mixings(:,:,i) + mixing;
