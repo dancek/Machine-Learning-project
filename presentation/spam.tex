@@ -16,7 +16,7 @@
 \author{Hannu Hartikainen and Eric Malmi}
 %\institute{Helsinki Institute of Physics / Adaptive Informatics Research Centre, \\ Aalto University (Helsinki University of Technology)}
 
-\date{\today}
+\date{2011-10-21}
 
 \setbeamertemplate{footline}[page number]
 \begin{document}
@@ -26,7 +26,7 @@
 \frame{\titlepage}
 %\frame{\tableofcontents}
 
-\section{Methods}
+\section{Introduction}
 \subsection{}
 
 \frame
@@ -50,6 +50,9 @@
 \end{figure}
 }
 
+
+\section{Classifiers}
+\subsection{}
 \frame
 {
     \frametitle{Random Forest}
@@ -163,7 +166,7 @@ Random forest & 97.1\% \\
 }
 \hspace{1.0cm}
 
-{\bf Ensemble accuracy: 99.1\%} \\
+{\bf Ensemble accuracy: 99.2\%} \\
 (with the known data split in half)
 }
 
@@ -171,11 +174,11 @@ Random forest & 97.1\% \\
 {
     \frametitle{Discussion}
     \begin{itemize}
-        \item The unknown data turned out to have $\sim66\%$ spam, as opposed to 50\% in training set
+        \item The unknown data turned out to have $\sim67\%$ spam, as opposed to 50\% in training set
         \begin{itemize}
             \item Possible benefits if we had used a similarly balanced set for training the classifiers
         \end{itemize}
-        \item We split the training data in half to compare different classifiers' predictions side-by-side
+        \item We split the training data in half to measure the accuracy of the ensemble method
         \begin{itemize}
             \item Proper cross-validation would have been better
         \end{itemize}
