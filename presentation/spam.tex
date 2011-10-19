@@ -10,6 +10,8 @@
 \usepackage{url}
 %\usecolortheme{orchid}
 
+\setbeamertemplate{navigation symbols}{}
+
 \title{Ensemble Method for Spam Classification}
 \author{Hannu Hartikainen and Eric Malmi}
 %\institute{Helsinki Institute of Physics / Adaptive Informatics Research Centre, \\ Aalto University (Helsinki University of Technology)}
@@ -130,9 +132,17 @@
     p(\mathbf{x}|\boldsymbol\mu,\boldsymbol\pi) &=& \sum_{k=1}^K \pi_kp(\mathbf{x}|\boldsymbol\mu_k)
   \end{eqnarray*}
   \begin{itemize}
+  \item Learn two mixture models $p(\mathbf{x}|\textmd{spam})$ and $p(\mathbf{x}|\textmd{ham})$
+  \item Use the Bayes' classifier 
+  \begin{equation}
+  \max_i P(C_i|\mathbf{x}) = \max_i P(C_i)p(\mathbf{x}|C_i)
+  \end{equation}
+  \item Advantages
+  \begin{itemize}
     \item Natural choise for bivariate data
     \item Outputs probabilities
     \item Can capture correlations between variables
+  \end{itemize}
   \end{itemize}
 
 %\begin{figure}
