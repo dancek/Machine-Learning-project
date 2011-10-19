@@ -60,17 +60,22 @@
 
 \frame
 {
-  \frametitle{Random Forest}
+    \frametitle{Random Forest}
 
-  \begin{itemize}
-    \item The idea in SVM is to find a hyperplane that separates two different data samples with the largest possible margin 
-  \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.7\textwidth]{random_forest_new2.png}
+        %\caption{Source: http://www.iis.ee.ic.ac.uk/~tkkim/iccv09_tutorial}
+    \end{figure}
 
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{svm_margin.jpg}
-	%\caption{Source:}
-\end{figure}
+    \begin{itemize}
+        \item Ensemble classifier using $n$ random trees
+        \begin{itemize}
+            \item Pick random attributes for each tree node
+            \item Calculate the best split using those attributes
+        \end{itemize}
+    \end{itemize}
+
 }
 
 \frame
