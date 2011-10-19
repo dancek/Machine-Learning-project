@@ -176,7 +176,8 @@ Random forest & 97.1\% \\
     \begin{itemize}
         \item The unknown data turned out to have $\sim67\%$ spam, as opposed to 50\% in training set
         \begin{itemize}
-            \item Possible benefits if we had used a similarly balanced set for training the classifiers
+            \item This information was incorporated in the Bernoulli mixture priors (we chose $P(\textmd{spam}) = 0.7$)
+            \item Possible benefits if we had used a similarly balanced set for training the SVM and Random forest classifiers
         \end{itemize}
         \item We split the training data in half to measure the accuracy of the ensemble method
         \begin{itemize}
