@@ -10,9 +10,9 @@
 \usepackage{url}
 %\usecolortheme{orchid}
 
-\title{Multivariate Analysis Techniques at the LHC}
-\author{Eric Malmi}
-\institute{Helsinki Institute of Physics / Adaptive Informatics Research Centre, \\ Aalto University (Helsinki University of Technology)}
+\title{Ensemble Method for Spam Classification}
+\author{Hannu Hartikainen and Eric Malmi}
+%\institute{Helsinki Institute of Physics / Adaptive Informatics Research Centre, \\ Aalto University (Helsinki University of Technology)}
 
 \date{\today}
 
@@ -86,10 +86,10 @@
 
 \frame
 {
-  \frametitle{Support Vector Machines}
+  \frametitle{Support Vector Machine}
 
   \begin{itemize}
-    \item The idea in SVM is to find a hyperplane that separates two different data samples with the largest possible margin 
+    \item Support Vector Machine (SVM) finds a hyperplane that separates two data samples with the largest possible margin 
   \end{itemize}
 
 \begin{figure}
@@ -107,10 +107,9 @@
 \begin{column}{7cm}
 {\small
   \begin{itemize}
-    \item Usually the data vectors are first projected into a higher dimensional space
-    \item However, we only need to define the dot product, called the kernel function $\Phi(x,y)$, in the high-dimensional space (the kernel trick)
-    \item We use the popular radial basis function: $\Phi(x,y) = \exp(-\gamma||x-y||^2)$
-    \item Finding of the hyperplane is a quadratic optimization problem
+    \item Project data vectors nonlinearly into a higher dimensional space $\Rightarrow$ more probable to find a separating hyperplane (Cover's theorem)
+    \item We only need to define the dot product, i.e. the kernel function $\Phi(x,y)$, in the high-dimensional space (the kernel trick)
+    \item We use a popular radial basis function: $\Phi(x,y) = \exp(-\gamma||x-y||^2)$
   \end{itemize}
 }
 \end{column}
@@ -129,7 +128,17 @@
   \frametitle{Bernoulli Mixture}
 
   \begin{itemize}
-    \item The idea in SVM is to find a hyperplane that separates two different data samples with the largest possible margin 
+    \item Mixture of multivariate Bernoulli distributions
+    %\item Natural for bivariate data, 
+  \end{itemize}
+  \begin{eqnarray*}
+    p(\mathbf{x}|\boldsymbol\mu) &=& \prod_{i=1}^D \mu_i^{x_i}(1-\mu_i)^{(1-x_i)} \\
+    p(\mathbf{x}|\boldsymbol\mu,\boldsymbol\pi) &=& \sum_{k=1}^K \pi_kp(\mathbf{x}|\boldsymbol\mu_k)
+  \end{eqnarray*}
+  \begin{itemize}
+    \item Natural choise for bivariate data
+    \item Outputs probabilities
+    \item Can capture correlations between variables
   \end{itemize}
 
 %\begin{figure}
