@@ -120,10 +120,10 @@
     \item Mixture of multivariate Bernoulli distributions
     %\item Natural for bivariate data, 
   \end{itemize}
-  \begin{eqnarray*}
+  \begin{eqnarray}
     p(\mathbf{x}|\boldsymbol\mu) &=& \prod_{i=1}^D \mu_i^{x_i}(1-\mu_i)^{(1-x_i)} \\
     p(\mathbf{x}|\boldsymbol\mu,\boldsymbol\pi) &=& \sum_{k=1}^K \pi_kp(\mathbf{x}|\boldsymbol\mu_k)
-  \end{eqnarray*}
+  \end{eqnarray}
   \begin{itemize}
   \item Learn two mixture models $p(\mathbf{x}|\textmd{spam})$ and $p(\mathbf{x}|\textmd{ham})$
   \item Use the Bayes' classifier 

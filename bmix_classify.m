@@ -3,6 +3,11 @@ y = spam1k(:,2);
 x = spam1k(:,3:end);
 n = length(y);
 
+%% Dimensionality reduction
+%ndim = 2;
+%[steps, selected, relevancy] = select_features(x,y,ndim,'method','cmim','degree',1);
+%x = x(:,selected);
+%%
 %x_train = x(1:n/2,:);
 %x_test = x(n/2+1:end,:);
 %y_train = y(1:n/2,:);
@@ -13,12 +18,15 @@ x0 = x(501:1000,:);
 y1 = y(1:500,:);
 y0 = y(501:1000,:);
 
+%% Kikkailuja
+obvious = find(sum(x1,2) > 6);
+nObvious = find(sum(x1,2) <= 6);
 %%
 % N-fold cross-validation
-n_folds = 10;
-components_spam = [1];%[13:19];
-components_ham = [1];%[1 2 3 5 7 10 12 15];
-nRepetitions = 5;
+n_folds = 2;
+components_spam = [13];%[13:19];
+components_ham = [5];%[1 2 3 5 7 10 12 15];
+nRepetitions = 1;
 
 tic
 for l = 1:length(components_spam)
