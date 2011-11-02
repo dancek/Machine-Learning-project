@@ -1,0 +1,93 @@
+\documentclass[12pt,a4paper,finnish,oneside]{book}
+%\documentclass[12pt,a4paper,finnish,oneside,draft]{book} % luonnos, nopeampi
+%\usepackage{tkk_t}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{alltt}
+\usepackage[english,swedish,finnish]{babel}
+\usepackage{amsmath}  % matematiikkaa..
+\usepackage[pdfborder={0 0 0}]{hyperref}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{rotating}
+\usepackage[format=hang,justification=raggedright]{caption}
+%\usepackage[titletoc]{appendix}
+
+
+% vältä marginaalin ylitystä
+%\setlength{\emergencystretch}{3em}
+
+
+\begin{document}
+%\raggedright % Tasaamattomat oikeat kappaleet. Voi pitää tasaamattomina!
+
+\selectlanguage{english}
+
+\frontmatter
+\pagestyle{plain}
+
+
+%%% COVER PAGE
+
+\author{Eric Malmi, Hannu Hartikainen}
+\title{Ensemble Method for Spam Classification}
+
+\maketitle
+
+
+
+\clearpage
+
+
+%%% ABSTRACT
+
+%\input{abstract}
+\clearpage
+
+
+%%% TABLE OF CONTENTS 
+
+\tableofcontents
+\label{pages-prelude}
+\clearpage
+
+
+% the main content starts
+\mainmatter
+
+% Muutetaan ala- ja ylätunnisteet
+\pagestyle{headings}
+
+
+% CHAPTERS
+%\input{introduction}
+%\input{...}
+
+\clearpage
+
+
+%%% BIBLIOGRAPHY
+
+% näytetään kaikki lähteet
+\nocite{*}
+
+\addcontentsline{toc}{chapter}{\bibname}
+%\addcontentsline{toc}{chapter} {References}
+
+% Tässä voit valita, mitä viittauskäytäntöä käytät.
+% Nyt kun kommentoitu pois, niin Harvard-tyyppinen "nimi-vuosi"
+\bibliographystyle{plainnat}
+%\bibliographystyle{plain}     % ... tutkimuksessa [1].
+%\bibliographystyle{alpha}     % ... tutkimuksessa [Meik09]
+%\bibliographystyle{apalike}   % ... tutkimuksessa 
+
+\bibliography{sources}
+
+
+%%% APPENDICES
+
+%\begin{appendices}
+%\input{...}
+%\end{appendices}
+
+\end{document}
