@@ -29,10 +29,8 @@ realclean: clean
 	rm -rf wiki
 
 update: wiki
-	echo update ei toimi, tutki ja korjaa
-#	cd wiki
-#	git pull
-#	cd ..
+	git --git-dir=wiki/.git --work-tree=wiki fetch
+	git --git-dir=wiki/.git --work-tree=wiki merge origin
 
 wiki:
 	git clone git@github.com:dancek/Machine-Learning-project.wiki.git wiki
