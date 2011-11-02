@@ -9,7 +9,7 @@
 #   update 	update the wiki files from git
 
 # all source files that are generated from wiki
-WIKI_DEPS = Introduction.tex
+WIKI_DEPS = Abstract.tex Introduction.tex Experiments.tex Methods.tex Results.tex Discussion.tex
 
 
 all: update pdf
