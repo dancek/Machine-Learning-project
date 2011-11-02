@@ -9,7 +9,7 @@
 #   update 	update the wiki files from git
 
 # all source files that are generated from wiki
-WIKI_DEPS = Abstract.tex Introduction.tex Experiments.tex Methods.tex Results.tex Discussion.tex
+WIKI_DEPS = Abstract.tex Introduction.tex Experiments.tex Methods.tex Results.tex Discussion.tex sources.bib
 
 
 all: update pdf
@@ -40,3 +40,6 @@ wiki:
 # get *.tex from wiki/*.md by converting with pandoc
 %.tex: wiki/%.md
 	pandoc -o $@ $<
+
+sources.bib: wiki/References.md
+	cp $< $@
