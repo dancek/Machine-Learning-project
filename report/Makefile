@@ -29,9 +29,10 @@ realclean: clean
 	rm -rf wiki
 
 update: wiki
-	cd wiki
-	git pull
-	cd ..
+	echo update ei toimi, tutki ja korjaa
+#	cd wiki
+#	git pull
+#	cd ..
 
 wiki:
 	git clone git@github.com:dancek/Machine-Learning-project.wiki.git wiki
