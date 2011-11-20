@@ -1,0 +1,17 @@
+\section*{Abstract}
+
+Classification algorithms have each their own characteristics, which
+have both strengths and weaknesses. By combining different classifiers,
+inherent weaknesses of a single classifier can be overcome. We propose
+an ensemble method for classifying binary data, combining predictions of
+three different classifiers. The Support Vector Machine, Bernoulli
+Mixture and Random Forest classifiers are used, each outputting
+prediction values in the continuous range $[0,1]$. These predictions are
+combined by the arithmetic mean.
+
+A data set of 10000 e-mail messages divided into classes \emph{spam} and
+\emph{ham} was used for testing the ensemble method. The validation
+accuracy of the ensemble classifier was significantly better than the
+best individual classifier, while the test accuracy was only very
+slightly better. The test accuracy achieved by the ensemble classifier
+was $98.0 \%$.

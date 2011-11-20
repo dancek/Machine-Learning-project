@@ -1,0 +1,86 @@
+\section{Experiments}
+
+Having chosen the classifiers, we still had some possibilities for
+improving accuracy. Each of the classifiers had parameters that could be
+optimized. Also, the method of combining predictions could be freely
+chosen.
+
+\subsection{Parameter optimization}
+
+For testing accuracy we had the 1000 known data points available. To
+make the best use of the data, we used cross-validation for training and
+testing the classifiers. Cross-validation means making different
+partitions of the data, each time choosing a large training set and a
+small test set. This way, all data points get a prediction in one of the
+partitions. These different test results are then averaged to get
+results representing the whole known data set.
+
+As a compromise between performance and reliability, we chose to use
+10-fold cross-validation. This means that the data is split into 10
+equally sized subsamples. The classifier is then run 10 times, each time
+choosing 9 subsamples as a 900-item training set and the rest as a
+100-item test set.
+
+The cross-validation method we used was also \emph{stratified}, meaning
+that each of the subsamples was randomly chosen so that it includes the
+same distribution of spam and ham as the original sample.
+
+\subsubsection{Support Vector Machine}
+
+The LibSVM implementation of the Support Vector Machine classifier can
+be tuned with many different parameters. The most important parameter is
+the choice of kernel function. We briefly tried out each of the four
+functions that LibSVM includes (linear, polynomial, radial basis
+function and sigmoid). The default radial basis function clearly
+outperformed the others in terms of accuracy. The radial basis function
+is of the form
+
+\begin{equation}
+e^{-\gamma |u-v|^2}
+\end{equation}
+
+where $u$ and $v$ are the data points and $\gamma$ is a freely
+selectable parameter. The value of $\gamma$ was optimized using 10-fold
+cross-validation and maximizing the average accuracy. The output of
+LibSVM was changed to probability estimates instead of hard binary
+classifications.
+
+\subsubsection{Bernoulli mixture}
+
+The optimizable parameters in a Bernoulli mixture are the number of
+components for the ham model and for the spam model. We varied the
+number of these components separately from 1 to 20 and used 10-fold
+cross-validation to measure the accuracy of each parameter combination.
+Each partitioning was rerun 5 times to get a more reliable estimate of
+the accuracy since the EM algorithm gets sometimes stuck in a local
+optimum. The accuracy was calculated as the average over all these runs.
+It might have been better to select only the best of the 5 runs.
+
+\subsubsection{Random Forest}
+
+The Random Forest classifier allowed changing tree generation
+parameters, the amount of trees in the forest and the random seed. As
+the trees are independent of each other, we reasoned that the amount of
+trees affects the variance of accuracy. We chose to minimize variance by
+adding more trees. Otherwise, we chose to use the default parameters as
+provided by Weka 3.6.5.
+
+\subsection{Ensemble validation}
+
+For validating the ensemble method, we split the known data in half as a
+training set and a test set. The sets were chosen so that the
+distribution of spam and ham was retained. The reason for not using
+10-fold cross-validation for validating the ensemble method as well as
+the single classifiers was related to time constraints. This should be
+changed in future work.
+
+The baseline method for combining predictions was chosen to be simply
+the arithmetic mean. This seemed the simplest and most intuitive, so
+other methods were compared to it. Besides mean, we also tested the
+median of the predictions, and the mode of rounded binary predictions.
+Both yielded worse accuracy in the test set, so they were disregarded.
+
+We also thought of using a weighted mean. The errors each classifier
+made in the test set were manually reviewed. However, we found no
+significantly better way to adjust the weights than to just use the same
+weight for all three classifiers.

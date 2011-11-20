@@ -1,0 +1,116 @@
+\section{Methods}
+
+Choosing an algorithm for classifying data is difficult, because
+different algorithms have different characteristics. There's no single
+algorithm that's always best---each algorithm has its own strengths and
+weaknesses. With this realization, we decided to use an ensemble method,
+combining different algorithms.
+
+We decided to choose three algorithms, so as to gain some redundancy
+while keeping the method relatively simple. For any type of failure
+\emph{intrinsic} to an algorithm, the two other algorithms are not prone
+to make the same mistake. Thus most intrinsic mis-classifications can be
+avoided; while one algorithm claims the wrong class, the two others get
+it right.
+
+The three algorithms we use all output \emph{probabilities}. Even in the
+case that two of the algorithms are uncertain but leaning towards the
+wrong classification, but one is correct and very certain, we can get
+the correct result.
+
+For combining the predictions of different algorithms, we used simply
+the arithmetic mean. In our experiments, this proved to be efficient and
+no other method showed significantly better results.
+
+\subsection{Support Vector Machine}
+
+The Support Vector Machine classifier works by finding a hyperplane that
+separates two data samples with the largest possible margin. The method
+becomes efficient as data is projected to a higher-dimension space.
+According to Cover's Theorem, this makes finding a separating hyperplane
+more probable. The actual mapping between the two spaces need not be
+found--it suffices to define the dot product, i.e.~the kernel function
+$\phi(u,v)$. \cite{cortes1995support}
+
+Commonly, the kernel function is chosen to be linear $\phi(u,v) = u' v$,
+polynomial $\phi(u,v) = (\gamma u' v + C)^n$, radial basis function
+$\phi(u,v) = e^{-\gamma |u-v|^2}$ or sigmoid
+$\phi(u,v) = tanh(\gamma u' v + C)$.
+
+Weka \cite{weka} was used for applying the Support Vector Machine
+classifier to the data. The specific implementation we used was LibSVM
+\cite{libsvm}, using the WLSVM interface \cite{wlsvm}.
+
+\subsection{Bernoulli Mixture}
+
+If we know the likelihood functions $p(\mathbf{x}|\boldsymbol\theta_i)$
+and prior probabilities $P(C_i)$ of classes $i$ we want to distinguish,
+the Bayes' rule gives us an optimal classifier. The class of a new
+instance $\mathbf{x}$ is given by choosing the class with the highest
+posterior probability
+\begin{equation}
+ \textmd{arg}\max_i P(C_i|\mathbf{x}) \propto p(\mathbf{x}|\boldsymbol\theta_i)P(C_i).
+\end{equation}
+
+In reality, however, we do not have the correct likelihood functions but
+we need to estimate them from the data. This is what we do in this work
+as well, we estimate likelihood functions for both ham and spam
+instances and then use these models to classify new instances.
+
+A natural way to model binary data and estimate its likelihood function
+is to use a Bernoulli distribution, given by
+\begin{equation}
+  p(\mathbf{x}|\boldsymbol\mu) = \prod_{i=1}^D \mu_i^{x_i}(1-\mu_i)^{(1-x_i)}.
+\end{equation}
+
+Parameters $\mu_i$ are the means of different variables in data
+$\mathbf{x}$ and thus the farther from the means we are the lower
+likelihood we get.
+
+A drawback of the Bernoulli distribution is, however, that it assumes
+that the variables are independent. In case of separating between spam
+and ham, this assumption leads into in a Naive Bayes classifier. The
+reason why this assumption is nevertheless commonly approved is that it
+is infeasible to model all the covariances between variables as this
+would require us to estimate a total of $\mathcal{O}(n^2)$ parameters.
+
+To circumvent these problems, we use a
+\emph{mixture of multivariate Bernoulli distributions} or shortly a
+\emph{Bernoulli mixture} \cite{lazarsfeld1968latent}. A Bernoulli
+mixture takes a linear combination of single Bernoullis, called the
+mixture components, with parameters $\boldsymbol\mu_i$. The resulting
+distribution is given by
+\begin{equation}
+ p(\mathbf{x}|\boldsymbol\mu,\boldsymbol\pi) = \sum_{k=1}^K \pi_kp(\mathbf{x}|\boldsymbol\mu_k),
+\end{equation}
+
+where $\pi_k$ are the weights that sum up to one. The covariance of this
+distribution is not anymore a diagonal matrix meaning that it captures
+some of the correlations in the data \cite{bishop2006pattern}.
+
+To learn the model, we use the BernoulliMix software package
+\cite{bmix}. BernoulliMix uses the EM algorithm to learn the model
+parameters.
+
+\subsection{Random Forest}
+
+The Random Forest classifier, described by Ho \cite{ho1995random}, works
+by creating a bunch of decision trees randomly. Each single tree is
+created in a randomly selected subspace of the feature space. Trees in
+different subspaces complement each other's classifications.
+
+The single trees are Oblique Decision Trees. For each node of a tree, a
+hyperplane is selected to divide the sample into two further
+subspaces--corresponding to two branches of the tree. This is repeated
+until each branch ends with a subspace containing only a single class.
+
+Predictions of the different trees for a test point are combined with a
+discriminant function, which in \cite{ho1995random} is basically done by
+just averaging the posterior probabilities. The Random Forest classifier
+attains an improved generalization accuracy compared to other decision
+tree-based classifiers. It still retains the excellent accuracy on
+training data inherent to decision trees. \cite{ho1995random}
+
+The built-in Random Forest implementation in Weka \cite{weka} was used.
+The implementation is created considering some further research on
+generating Random forests \cite{breiman2001random}.

@@ -12,7 +12,7 @@
 WIKI_DEPS = Abstract.tex Introduction.tex Experiments.tex Methods.tex Results.tex Discussion.tex sources.bib
 
 
-all: update pdf
+all: pdf
 
 pdf: main.pdf
 
