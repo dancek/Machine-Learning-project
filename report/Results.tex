@@ -1,4 +1,4 @@
-\section{Results}
+\section{Results} \label{sec:results}
 
 \subsection{Parameter Optimization}
 
@@ -12,6 +12,13 @@ mixture are shown in Figure (lisää kuva results/bmix\_opt.pdf). The best
 accuracy (98.0 \%) was obtained with 12 ham components and 17 spam
 components.
 
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\linewidth]{../results/bmix_opt.pdf}
+\caption{Bernoulli mixture accuracies with different number of spam and ham components.}
+\label{fig:bmix}
+\end{figure}
+
 With the Random Forest classifier, we chose to use the default
 parameters as changing these did not seem to affect the classification
 accuracy significantly.
@@ -21,17 +28,17 @@ accuracy significantly.
 The average cross-validation accuracy of each classifier for the known
 data is shown in Table \ref{results1k}.
 
-\begin{table}[H]
+\begin{table}[!ht]
 \caption{Average accuracy on known data (10-fold cross-validation)}
 \label{results1k}
-%\begin{center}
+\begin{center}
 \begin{tabular}{l|c}
 Classifier & Accuracy \\ \hline
 SVM & 98.4\% \\
 Bernoulli mixture & 98.0\% \\
 Random forest & 97.1\% \\
 \end{tabular}
-%\end{center}
+\end{center}
 \end{table}
 
 The ensemble method gave us $99.2 \%$ accuracy with a simple half-half
@@ -39,10 +46,10 @@ split of the known data that was used also for the parameter
 optimization. Test accuracies and error counts for unknown 9000 data
 samples are given in Table \ref{results9k}.
 
-\begin{table}
+\begin{table}[!ht]
 \caption{Accuracy and error count on unknown data}
 \label{results9k}
-%\begin{center}
+\begin{center}
 \begin{tabular}{l|c|c}
 Classifier & Accuracy & Error count \\ \hline
 SVM & 97.2\% & 251 \\
@@ -50,5 +57,5 @@ Bernoulli mixture & 98.0\% & 181 \\
 Random forest & 96.3\% & 329 \\ \hline
 Ensemble method & 98.0\% & 179 \\
 \end{tabular}
-%\end{center}
+\end{center}
 \end{table}
