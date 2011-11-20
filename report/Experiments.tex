@@ -34,11 +34,9 @@ functions that LibSVM includes (linear, polynomial, radial basis
 function and sigmoid). The default radial basis function clearly
 outperformed the others in terms of accuracy. The radial basis function
 is of the form
-
 \begin{equation}
 e^{-\gamma |u-v|^2}
 \end{equation}
-
 where $u$ and $v$ are the data points and $\gamma$ is a freely
 selectable parameter. The value of $\gamma$ was optimized using 10-fold
 cross-validation and maximizing the average accuracy. The output of
