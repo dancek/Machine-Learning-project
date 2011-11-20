@@ -1,8 +1,8 @@
 \section{Methods} \label{sec:methods}
 
 Choosing an algorithm for classifying data is difficult, because
-different algorithms have different characteristics. There's no single
-algorithm that's always best---each algorithm has its own strengths and
+different algorithms have different characteristics. There is no single
+algorithm that is always best---each algorithm has its own strengths and
 weaknesses. With this realization, we decided to use an ensemble method,
 combining different algorithms.
 
@@ -13,7 +13,7 @@ to make the same mistake. Thus most intrinsic mis-classifications can be
 avoided; while one algorithm claims the wrong class, the two others get
 it right.
 
-The three algorithms we use all output \emph{probabilities}. Even in the
+The three algorithms we use all output continuous values from 0 to 1. Even in the
 case that two of the algorithms are uncertain but leaning towards the
 wrong classification, but one is correct and very certain, we can get
 the correct result.
@@ -26,16 +26,16 @@ no other method showed significantly better results.
 
 The Support Vector Machine classifier works by finding a hyperplane that
 separates two data samples with the largest possible margin. The method
-becomes efficient as data is projected to a higher-dimension space.
+becomes efficient as data is projected to a higher-dimensional space.
 According to Cover's Theorem \cite{cover1965geometrical}, this makes finding a separating hyperplane
 more probable. The actual mapping between the two spaces need not be
 found--it suffices to define the inner product, i.e.~the kernel function
 $\phi(u,v)$. \cite{cortes1995support}
 
-Commonly, the kernel function is chosen to be linear $\phi(u,v) = u' v$,
-polynomial $\phi(u,v) = (\gamma u' v + C)^n$, radial basis function
-$\phi(u,v) = \exp(-\gamma |u-v|^2)$ or sigmoid
-$\phi(u,v) = \tanh(\gamma u' v + C)$.
+Commonly, the kernel function is chosen to be linear $u' v$,
+polynomial $(\gamma u' v + C)^n$, radial basis function
+$\exp(-\gamma |u-v|^2)$ or sigmoid
+$\tanh(\gamma u' v + C)$.
 
 Weka \cite{weka} was used for applying the Support Vector Machine
 classifier to the data. The specific implementation we used was LibSVM
@@ -52,7 +52,7 @@ posterior probability
  \textmd{arg}\max_i P(C_i|\mathbf{x}) \propto p(\mathbf{x}|\boldsymbol\theta_i)P(C_i).
 \end{equation}
 
-In reality, however, we do not have the correct likelihood functions but
+In reality, however, we do not have the true likelihood functions but
 we need to estimate them from the data. This is what we do in this work
 as well, we estimate likelihood functions for both ham and spam
 instances and then use these models to classify new instances.
@@ -68,7 +68,7 @@ $\mathbf{x}$ and thus the farther from the means we are the lower
 likelihood we get.
 
 A drawback of the Bernoulli distribution is, however, that it assumes
-that the variables are independent. In case of separating between spam
+that the variables are independent. In the case of separating between spam
 and ham, this assumption leads into in a Naive Bayes classifier. The
 reason why this assumption is nevertheless commonly approved is that it
 is infeasible to model all the covariances between variables as this
