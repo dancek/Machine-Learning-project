@@ -34,27 +34,25 @@ functions that LibSVM includes (linear, polynomial, radial basis
 function and sigmoid). The default radial basis function clearly
 outperformed the others in terms of accuracy. The radial basis function
 is of the form
-
 \begin{equation}
 \exp(-\gamma |u-v|^2)
 \end{equation}
-
 where $u$ and $v$ are the data points and $\gamma$ is a freely
 selectable parameter. The value of $\gamma$ was optimized using 10-fold
 cross-validation and maximizing the average accuracy. The output of
 LibSVM was changed to probability estimates instead of hard binary
 classifications.
 
-\subsubsection{Bernoulli mixture}
+\subsubsection{Bernoulli Mixture}
 
 The optimizable parameters in a Bernoulli mixture are the number of
 components for the ham model and for the spam model. We varied the
 number of these components separately from 1 to 20 and used 10-fold
 cross-validation to measure the accuracy of each parameter combination.
 Each partitioning was rerun 5 times to get a more reliable estimate of
-the accuracy since the EM algorithm gets sometimes stuck in a local
-optimum. The accuracy was calculated as the average over all these runs.
-It might have been better to select only the best of the 5 runs.
+the accuracy since the EM algorithm usually finds a different local optima when rerun.
+The accuracy was calculated as the average over all these runs.
+It might have been better to select only the best accuracy of the 5 runs.
 
 \subsubsection{Random Forest}
 
