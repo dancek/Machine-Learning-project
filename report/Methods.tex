@@ -1,4 +1,4 @@
-\section{Methods}
+\section{Methods} \label{sec:methods}
 
 Choosing an algorithm for classifying data is difficult, because
 different algorithms have different characteristics. There's no single
@@ -27,15 +27,15 @@ no other method showed significantly better results.
 The Support Vector Machine classifier works by finding a hyperplane that
 separates two data samples with the largest possible margin. The method
 becomes efficient as data is projected to a higher-dimension space.
-According to Cover's Theorem, this makes finding a separating hyperplane
+According to Cover's Theorem \cite{cover1965geometrical}, this makes finding a separating hyperplane
 more probable. The actual mapping between the two spaces need not be
-found--it suffices to define the dot product, i.e.~the kernel function
+found--it suffices to define the inner product, i.e.~the kernel function
 $\phi(u,v)$. \cite{cortes1995support}
 
 Commonly, the kernel function is chosen to be linear $\phi(u,v) = u' v$,
 polynomial $\phi(u,v) = (\gamma u' v + C)^n$, radial basis function
-$\phi(u,v) = e^{-\gamma |u-v|^2}$ or sigmoid
-$\phi(u,v) = tanh(\gamma u' v + C)$.
+$\phi(u,v) = \exp(-\gamma |u-v|^2)$ or sigmoid
+$\phi(u,v) = \tanh(\gamma u' v + C)$.
 
 Weka \cite{weka} was used for applying the Support Vector Machine
 classifier to the data. The specific implementation we used was LibSVM
