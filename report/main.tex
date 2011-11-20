@@ -13,6 +13,24 @@
 \usepackage[format=hang,justification=raggedright]{caption}
 %\usepackage[titletoc]{appendix}
 
+\usepackage{listings}
+\usepackage{listingsutf8}
+\lstset{
+        language=MATLAB,
+        basicstyle=\tiny\ttfamily,
+        extendedchars=\true,
+        inputencoding=utf8/latin1,
+        showstringspaces=false,
+        numbers=left,
+        tabsize=4,
+        keywordstyle=\color[rgb]{0.15, 0.2, 0.85},
+        commentstyle=\color[rgb]{0.2, 0.55, 0.55},
+        stringstyle=\color[rgb]{0.75, 0.0, 0.0}
+}
+        %backgroundcolor=\color[rgb]{0.99, 0.97, 0.92},
+
+\lstset{frame=ttbt}
+
 
 % vältä marginaalin ylitystä
 %\setlength{\emergencystretch}{3em}
@@ -89,6 +107,15 @@
 
 
 %%% APPENDICES
+
+\newpage
+\section*{Appendix: Code}
+
+\addcontentsline{toc}{section}{Appendix: Code}
+
+\lstinputlisting{../bmix_koodi.m}
+
+\lstinputlisting{../bmix_pred.m}
 
 %\begin{appendices}
 %\input{...}

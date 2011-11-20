@@ -2,15 +2,15 @@
 
 Based on our initial predictions for the unknown test data set, we observed that the spam/ham ratio is about 7:3. In the Bernoulli mixture, we utilized this information, according to Bayes' formula, by weighting the classes' posterior probabilities with prior probabilities 0.7 and 0.3. This seemed to improve the Bernoulli mixture as it superseded the other two methods in test accuracies.
 
-A similar weighting could have been done with the other two methods. However, this would not have been so well justified as the other methods are not probabilistic by nature and it is arguable whether we can interpret their outputs as probabilities. Instead, we could have modified the spam/ham ratio in the training data. Furthermore, nor is it meaningful to try to draw any probabilistic interpretations for taking the mean of the classifiers' outputs. Instead, this operation should be regarded as a simple heuristic trick that proved to be useful.
+A similar weighting could have been done with the other two methods. However, this would not have been so well justified as the other methods are not probabilistic by nature and it is arguable whether we can interpret their outputs as probabilities. Instead, we could have modified the spam/ham ratio in the training data. 
 
-The 448 dimensional data we classified contained probably lots of insignificant or redundant information that did not contribute to the classification. Therefore, some feature extraction methods could have been tested to make the classification task easier for the different classifiers. For example, the EM algorithm used with the Bernoulli mixture is time consuming and may find only local optima. The parameter optimization, whose results are shown in Figure \ref{fig:bmix}, took about one week to complete with a standard desktop and the accuracies over different folds varied. More parameter combinations and repetitions could have been calculated after applying, e.g., binary PCA to the data. An alternative approach would have been to use feature selection where we try find only the variables that contribute to the classification task.
+The 448 dimensional data we classified contained probably lots of insignificant or redundant information that did not contribute to the classification. Therefore, some feature extraction methods could have been tested to make the classification task easier for the different classifiers. For example, the EM algorithm used with the Bernoulli mixture is time consuming and may find only local optima. The parameter optimization, whose results are shown in Figure \ref{fig:bmix}, took about one week to complete with a standard desktop and the accuracies over different folds varied. More parameter combinations and repetitions could have been calculated after applying e.g. binary PCA to the data. An alternative approach would have been to use feature selection where we try find only the variables that contribute to the classification task.
 
 Other ways to improve the classification could have been to try out a broader set of base learners and different ways of combining these. For example, boosting or bagging could have been tested.
 
 \subsection{Workload}
 
-The project was moderately challenging. Granted, it could have been less difficult had we chosen a simpler method. Each of us used approximately 25 hours (about 1 ECTS credit) for the project. The total is thus 50--55 hours.
+The project was moderately challenging. Granted, it could have been less difficult had we chosen a simpler method. Both of us used approximately 25 hours (about 1 ECTS credit) for the project. The total is thus 50--55 hours.
 
 \section{Conclusions}
 
@@ -21,10 +21,4 @@ classifier were used, choosing the model parameters with 10-fold
 cross-validation. High cross-validation and test accuracies ranging from
 $96.3 \%$ to $98.4 \%$ were obtained with each of the classifiers.
 
-The classifiers gave continuous output values from 0 to 1 and the
-ensemble was selected as the mean of these values. The ensemble
-validation accuracy ($99.2 \%$) clearly superseded that of each
-individual classifier. The ensemble test accuracy was very slightly better than the test
-accuracy of Bernoulli mixture which had the best performance on the test
-set. Consequently, we succeeded in our mission to select versatile
-classifiers that complement each other.
+The classifiers gave continuous output values from 0 to 1 and the ensemble was selected as the mean of these values. The ensemble test accuracy was very slightly better than the test accuracy of Bernoulli mixture which had the best performance on the test set. The ensemble validation accuracy ($99.2 \%$), however, clearly superseded that of each individual classifier. Consequently, we succeeded in our mission to select versatile classifiers that complement each other.
